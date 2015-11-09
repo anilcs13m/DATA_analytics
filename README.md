@@ -1,4 +1,4 @@
-# DATA_analytics
+# he Analytics Edge by MIT
 This is a repository for all The Analytics Edge program 
 # Assignment 1 #
 ~~~
