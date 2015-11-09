@@ -2,8 +2,10 @@
 This is a repository for all The Analytics Edge program 
 # week 1 #
 ~~~
-Recitation for this in lecture [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Recitation.R) and data for this lecture [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name USDA
+Recitation for this in lecture 
 ~~~
+Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Recitation.R) and data for this lecture [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name USDA
+
 ~~~
 1. **Assignment** Internet privacy poll:
 ~~~
