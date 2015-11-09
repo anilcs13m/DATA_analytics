@@ -5,6 +5,7 @@ This is a repository for all The Analytics Edge program
 Recitation for this week
 ~~~
 Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Recitation.R) and data for this lecture [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **USDA**.**csv**
+
 ### Assignment 1 ###
 ~~~
 Internet privacy poll:
@@ -16,6 +17,9 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 ~~~
 Recitation for this week
 ~~~
+Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit2_Recitation.R) and data for this lecture training and test data[here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **NBA**_**train**, **test**
+
+
 ### Assignment 2 ###
 ~~~
 2. State Data:
