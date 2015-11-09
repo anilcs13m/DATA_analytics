@@ -31,5 +31,5 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 ~~~
 2. Forecasting Elantra Sales:
 ~~~
-[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R) is the code and data used for this program is 
-present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **statedata** . **csv** file
+[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/elantra.R) is the code and data used for this program is 
+present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **elantra** . **csv** file
