@@ -8,7 +8,7 @@ Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Rec
 
 ### Assignment 1 ###
 ~~~
-Internet privacy poll:
+1. Internet privacy poll:
 ~~~
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/InternetPrivacyPoll.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **AnonymityPoll** . **csv** file
@@ -17,12 +17,19 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 ~~~
 Recitation for this week
 ~~~
-Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit2_Recitation.R) and data for this lecture training and test data[here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **NBA**_**train**, **test**
+Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit2_Recitation.R) and data for this lecture training and test [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **NBA**,train, test
 
 
-### Assignment 2 ###
+### Assignment 1 ###
 ~~~
-2. State Data:
+1. State Data:
+~~~
+[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R) is the code and data used for this program is 
+present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **statedata** . **csv** file
+
+### Assignment 2###
+~~~
+2. Forecasting Elantra Sales:
 ~~~
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **statedata** . **csv** file
