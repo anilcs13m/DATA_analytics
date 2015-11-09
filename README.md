@@ -1,6 +1,6 @@
 # The Analytics Edge by MIT
 This is a repository for all The Analytics Edge program 
-# Week 1 #
+# Unit 1 #
 ~~~
 Recitation for this week
 ~~~
@@ -13,7 +13,7 @@ Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Rec
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/InternetPrivacyPoll.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **AnonymityPoll** . **csv** file
 
-# Week 2 #
+# Unit 2 #
 ~~~
 Recitation for this week
 ~~~
@@ -33,3 +33,17 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 ~~~
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/elantra.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **elantra** . **csv** file
+
+# Unit 3 #
+~~~
+Recitation for this week
+~~~
+Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit3_Recitation.R) and data for this lecture training and test [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **pollingData**
+
+
+### Assignment 1 ###
+~~~
+1. predicting the baseball world series champion
+~~~
+[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/baseball.R) is the code and data used for this program is 
+present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **baseball** . **csv** file
