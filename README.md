@@ -36,6 +36,19 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/elantra.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **elantra** . **csv** file
 
+~~~
+4. climate change:
+~~~
+[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/climate_change.R) is the code and data used for this program is 
+present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **climate_change** . **csv** file
+
+~~~
+5. Detecting Flu:
+~~~
+[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Detecting_Flu.R) is the code and data used for this program is 
+present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **FluTrain**,**FluTest** . **csv** file
+
+
 # Unit 3 #
 ~~~
 Recitation for this week
