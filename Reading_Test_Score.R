@@ -60,12 +60,13 @@ RMSE = sqrt(mean((predTest-test$readingScore)^2))
 #BASELINE PREDICTION AND TEST-SET SSE
 baseline = mean(train$readingScore) #baseline model the total sum of squares (SST).
 #What is the sum of squared errors of the baseline model on the testing set?
-SSE = sum((baseline-test$readingScore)^2)
+SST = sum((baseline-test$readingScore)^2)
 #R - squared 1 - SSE/SST
 # where SSE is the sum of squared errors of the model(sum((predTest-test$readingScore)^2)) on the test set and SST is
 # the sum of squared errors of the baseline model (mean(train$readingScore)).
 ###################
-
+1 - SSE/SST
+###
 
 
 

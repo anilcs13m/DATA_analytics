@@ -6,7 +6,6 @@ Recitation for this week
 ~~~
 Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit1_Recitation.R) and data for this lecture [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **USDA**.**csv**
 
-### Assignment 1 ###
 ~~~
 1. Internet privacy poll:
 ~~~
@@ -31,8 +30,6 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Reading_Test_Score.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **pisa2009test** and **pisa2009test** **csv** file
 
-
-
 ~~~
 3. Forecasting Elantra Sales:
 ~~~
@@ -46,7 +43,6 @@ Recitation for this week
 Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit3_Recitation.R) and data for this lecture training and test [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **pollingData**
 
 
-### Assignment 1 ###
 ~~~
 1. predicting the baseball world series champion
 ~~~
