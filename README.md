@@ -19,15 +19,12 @@ Recitation for this week
 ~~~
 Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit2_Recitation.R) and data for this lecture training and test [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **NBA**,train, test
 
-
-### Assignment 1 ###
 ~~~
 1. State Data:
 ~~~
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **statedata** . **csv** file
 
-### Assignment 2 ###
 ~~~
 2. Reading Test Score:
 ~~~
@@ -35,7 +32,7 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **pisa2009test** and **pisa2009test** **csv** file
 
 
-### Assignment 3###
+
 ~~~
 3. Forecasting Elantra Sales:
 ~~~
