@@ -47,14 +47,15 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 ~~~
 [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Detecting_Flu.R) is the code and data used for this program is 
 present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this directory with name **FluTrain**,**FluTest** . **csv** file
+# UNIT: 2 #
 
-|   	|   	|   	|   	|   	|
+|  Assignment 	|  Name 	|   Code	|  Data 	|  
 |---	|---	|---	|---	|---	|
-|   	|   	|   	|   	|   	|
-|   	|   	|   	|   	|   	|
-|   	|   	|   	|   	|   	|
-
-
+|   1	|  State Data 	| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R)  	| [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)  	|   	
+|   2	|   	|   	|   	|   	|
+|   3	|   	|   	|   	|   	|
+|   4   |       |
+|   5   |       |
 # Unit 3 #
 ~~~
 Recitation for this week
