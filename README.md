@@ -52,10 +52,11 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 |  Assignment 	|  Name 	|   Code	|  Data 	|  
 |---	|---	|---	|---	|---	|
 |   1	|  State Data 	| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/StateData.R)  	| [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)  	|   	
-|   2	|   	|   	|   	|   	|
-|   3	|   	|   	|   	|   	|
-|   4   |       |
-|   5   |       |
+|   2	| Reading Test Score   	| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Reading_Test_Score.R)  	| [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)  	|   
+|   3	| Forecasting Elantra Sales  	|[Here](https://github.com/anilcs13m/DATA_analytics/blob/master/elantra.R)   	|  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) 	|   
+|   4   | climate change      | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/climate_change.R)     |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)     |
+|   5   | Detecting Flu      |  [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Detecting_Flu.R)     |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)     |
+
 # Unit 3 #
 ~~~
 Recitation for this week
