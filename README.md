@@ -33,6 +33,7 @@ Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit3_Rec
 | Assignment | Name  | Code  | Data |
 |---         |---    |---    |---   |
 |     1      |predicting the baseball | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/baseball.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
-
-| 2    | Polarity Music     | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/polarity_music.R)      |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)| 
+| 2    | Polarity Music     | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/polarity_music.R)      |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+|3 | predict parole| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/predicting_parole.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+|4 | predict loan | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/predicting_loan.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
 
