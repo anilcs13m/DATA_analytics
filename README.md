@@ -22,7 +22,7 @@ present [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data) thi
 |   4   | climate change      | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/climate_change.R)     |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)     |
 |   5   | Detecting Flu      |  [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/Detecting_Flu.R)     |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)     |
 
-# Unit 3 #
+# UNIT 3 #
 
 ~~~
 Recitation for this week
@@ -37,3 +37,19 @@ Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit3_Rec
 |3 | predict parole| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/predicting_parole.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
 |4 | predict loan | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/predicting_loan.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
 
+
+# UNIT 4 #
+
+~~~
+Recitation for this week
+~~~
+Here is [code](https://github.com/anilcs13m/DATA_analytics/blob/master/Unit4_Recitation.R) and data for this lecture training and test [data](https://github.com/anilcs13m/DATA_analytics/tree/master/data) this name **boston**
+
+ 
+| Assignment | Name  | Code  | Data |
+|---         |---    |---    |---   |
+|     1      |census | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/census.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+| 2    | letter recognition  | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/letter_recognition.R)      |  [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+|3 | people vote| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/people_vote.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+|4 | supreme_court| [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/supreme_court.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
+| 5| state data | [Here](https://github.com/anilcs13m/DATA_analytics/blob/master/state_data.R) | [here](https://github.com/anilcs13m/DATA_analytics/tree/master/data)|
