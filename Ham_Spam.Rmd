@@ -1,3 +1,4 @@
+```
 ---
 title: "The Analytics Edge - Unit 5 :<br /> Assignment Email Ham or Spam"
 subtitle    : Reproducible notes following the assignment and lecture notes
@@ -10,6 +11,7 @@ output      :
     highlight: tango
     mathjax: "default"
 ---
+```
 
 ```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
 require(knitr)
