@@ -1,6 +1,6 @@
 ```
 
-The Analytics Edge:-Assignment Email Ham or Spam
+The Analytics Edge: Assignment Email Ham or Spam
 subtitle          : Reproducible notes following the assignment and lecture notes
 author            : Anil Kumar
 job               : IIT Madras
@@ -8,6 +8,7 @@ job               : IIT Madras
 ```
 
 [ [source files available on GitHub](https://github.com/anilcs13m) ]
+[[connect on linkedin]](https://in.linkedin.com/in/anilcs13m)]
 
 ## PRELIMINARIES
 
@@ -20,18 +21,8 @@ library("caTools")
 library("rpart")
 library("rpart.plot")
 library("ROCR")
-```
+library("randomForest")
 
-```{r saved_load_libs, echo = FALSE, eval = FALSE}
-# library("dplyr")
-# library("magrittr")
-# library("ggplot2")
-
-# library("caret")
-# library("e1071")
-# library("randomForest")
-# library("caret")
-# library("e1071")
 ```
 
 
