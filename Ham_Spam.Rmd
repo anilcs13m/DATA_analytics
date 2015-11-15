@@ -1,14 +1,15 @@
 ```
-
 The Analytics Edge: Assignment Email Ham or Spam
 subtitle          : Reproducible notes following the assignment and lecture notes
-author            : Anil Kumar
-job               : IIT Madras
-
 ```
+## author            : Anil Kumar
+## job               : IIT Madras
 
-[ [source files available on GitHub](https://github.com/anilcs13m) ]
-[[connect on linkedin]](https://in.linkedin.com/in/anilcs13m)]
+
+
+## [[source files available on GitHub](https://github.com/anilcs13m)]
+
+## [[connect on linkedin]](https://in.linkedin.com/in/anilcs13m)]
 
 ## PRELIMINARIES
 
@@ -28,8 +29,16 @@ library("randomForest")
 
 ## INTRODUCTION
 
-We will be looking into how to use the text of emails in the inboxes of Enron executives to
-predict if those emails are relevant to an investigation into the company.
+Nearly every email user has at some point encountered a "spam" email, which is an unsolicited message often advertising a
+product, containing links to malware, or attempting to scam the recipient. Roughly 80-90% of more than 100 billion emails
+sent each day are spam emails, most being sent from botnets of malware-infected computers. The remainder of emails are
+called "ham" emails.
+
+As a result of the huge number of spam emails being sent across the Internet each day, most email providers offer a spam
+filter that automatically flags likely spam messages and separates them from the ham. Though these filters use a number
+of techniques, most rely heavily on the analysis of the contents of an email via text analytics.
+
+We will be looking into how to use the text of emails is spam or ham.
 
 We will be extracting word frequencies from the text of the documents, and then integrating those
 frequencies into predictive models.  
@@ -37,33 +46,15 @@ frequencies into predictive models.
 We are going to talk about __predictive coding__ -- an emerging use of text analytics in the area
 of criminal justice.
 
-The case we will consider concerns Enron, a US energy company based out of Houston, Texas that was
-involved in a number of electricity production and distribution markets and that collapsed in the
-early 2000's after widespread account fraud was exposed. 
-To date Enron remains a stunning symbol of corporate corruption. 
-
-While Enron's collapse stemmed largely from accounting fraud, the firm also faced sanctions for
-its involvement in the California electricity crisis.    
-In 2000 to 2001, California experienced a number of power blackouts, despite having sufficient
-generating capacity.    
-It later surfaced that Enron played a key role in this energy crisis by artificially reducing
-power supply to spike prices and then making a profit from this market instability.
-
-The _Federal Energy Regulatory Commission_, or _FERC_, investigated Enron's involvement in the
-crisis, and its investigation eventually led to a \$1.52 billion settlement.     
-FERC's investigation into Enron will be the topic of today's recitation.
 
 ### The _eDiscovery_ Problem 
 
-Enron was a huge company, and its corporate servers contained millions of emails and other electronic files.
-Sifting through these documents to find the ones relevant to an investigation is no simple task.
-
-In law, this electronic document retrieval process is called the __eDiscovery problem__,
-and __relevant files__ are called __responsive documents__.     
-Traditionally, the eDiscovery problem has been solved by using keyword search.
-In our case, perhaps, searching for phrases like "_electricity bid_" or "_energy schedule_",
-followed by an expensive and time-consuming manual review process, in which attorneys read through
-thousands of documents to determine which ones are responsive.
+we will build and evaluate a spam filter using a publicly available dataset first described in the 2006 conference paper 
+"Spam Filtering with Naive Bayes -- Which Naive Bayes?" by V. Metsis, I. Androutsopoulos, and G. Paliouras. The "ham" messages 
+in this dataset come from the inbox of former Enron Managing Director for Research Vincent Kaminski, one of the inboxes 
+in the Enron Corpus. One source of spam messages in this dataset is the SpamAssassin corpus, which contains hand-labeled 
+spam messages contributed by Internet users. The remaining spam was collected by Project Honey Pot, a project that collects spam messages and identifies spammers by publishing email address that humans would know not to contact but that bots might target with spam.
+The full dataset we will use was constructed as roughly a 75/25 mix of the ham and spam messages.
 
 ### Predictive Coding
 
@@ -74,14 +65,10 @@ remaining documents are responsive.
 
 ### The Data
 
-As part of its investigation, the _FERC_ released hundreds of thousands of emails from top
-executives at Enron creating the __largest publicly available set of emails today__.   
-We will use this data set called the _Enron Corpus_ to perform predictive coding in this recitation.
-
 The data set contains just two fields:
 
 * __email__: the text of the email in question, 
-* __responsive__: a binary (0/1) variable telling whether the email relates to energy schedules or bids.
+* __responsive__: a binary (0/1) variable telling whether the email was spam.
 
 The labels for these emails were made by attorneys as part of the 2010 text retrieval conference
 legal track, a predictive coding competition.
@@ -90,7 +77,9 @@ legal track, a predictive coding competition.
 ## LOADING THE DATA
 
 ```{r loading_data}
-emails <- read.csv("energy_bids.csv", stringsAsFactors = FALSE)
+emails = read.csv("emails.csv", stringsAsFactors=FALSE)
+# How many of the emails are spam
+table(emails$spam)
 ```
 
 ```{r check_df}
