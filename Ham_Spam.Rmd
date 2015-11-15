@@ -1,17 +1,13 @@
-```
-          :The Analytics Edge
-          : Assignment Email Ham or Spam
-          : Reproducible notes following the assignment and lecture notes
-```
 
-##           : Anil Kumar
-##           : IIT Madras
+#  Assignment Email Ham or Spam
+##  Reproducible notes for Email spam or not
+
+#            Anil Kumar  IIT Madras
 
 
 
-# [[source files available on GitHub](https://github.com/anilcs13m)]
-
-# [[connect on linkedin]](https://in.linkedin.com/in/anilcs13m)]
+## [[source files available on GitHub](https://github.com/anilcs13m)]]
+## [[connect on linkedin]](https://in.linkedin.com/in/anilcs13m)]]
 
 ## PRELIMINARIES
 
@@ -56,7 +52,6 @@ we will build and evaluate a spam filter using a publicly available dataset firs
 in this dataset come from the inbox of former Enron Managing Director for Research Vincent Kaminski, one of the inboxes 
 in the Enron Corpus. One source of spam messages in this dataset is the SpamAssassin corpus, which contains hand-labeled 
 spam messages contributed by Internet users. The remaining spam was collected by Project Honey Pot, a project that collects spam messages and identifies spammers by publishing email address that humans would know not to contact but that bots might target with spam.
-The full dataset we will use was constructed as roughly a 75/25 mix of the ham and spam messages.
 
 ### Predictive Coding
 
@@ -69,61 +64,54 @@ remaining documents are responsive.
 
 The data set contains just two fields:
 
-* __email__: the text of the email in question, 
-* __responsive__: a binary (0/1) variable telling whether the email was spam.
-
-The labels for these emails were made by attorneys as part of the 2010 text retrieval conference
-legal track, a predictive coding competition.
-
+* __text__: the text of the email in question, 
+* __spam__: a binary (0/1) variable telling whether the email was spam.
 
 ## LOADING THE DATA
 
 ```{r loading_data}
 emails = read.csv("emails.csv", stringsAsFactors=FALSE)
-# How many of the emails are spam
-table(emails$spam)
 ```
-
+## Let's do the some analytics of the data
 ```{r check_df}
 str(emails)
 ```
-
 Let's look at a few examples (using the `strwrap()` function for easier-to-read formatting):
 ```{r example_email_1}
-strwrap(emails$email[1])
+strwrap(emails$text[1])
 ```
-We can see just by parsing through the first couple of lines that this is an email about a new working paper,
-"_The Environmental Challenges and Opportunities in the Evolving North American Electricity Market_", 
-released by the Commission for Environmental Cooperation, or CEC.    
-While this certainly deals with electricity markets, it doesn't have to do with energy schedules
-or bids, hence it is not _responsive_ to our query.
-If we look at the value in the `responsive` variable for this email: 
-```{r example_email_1_responsive}
-emails$responsive[1]
-```
-we see that its value is __0__, as expected.
 
- 
 Let's check the second email: 
 ```{r example_email_2}
-strwrap(emails$email[2])
+strwrap(emails$text[2])
 ```
-The original message is actually very short, it just says _FYI_, and most of it is a forwarded message.
-We have the list of recipients, and down at the very bottom is the message itself.
-    "Attached is my report prepared on behalf of the California State auditor."
-There is also an attached report.    
-Our data set contains just the text of the emails and not the text of the attachments.
-It turns out, as we might expect, that this attachment had to do with Enron's electricity bids in
-California, and therefore this email is _responsive_ to our query.    
 We can check this in the value of the `responsive` variable.
 ```{r example_email_2_responsive}
-emails$responsive[2]
+emails$spam[2]
 ```
-We see that that it is a __1__.
 
-Let's look at the breakdown of the number of emails that are responsive to our query.
+Which word appears at the beginning of every email in the dataset
+```{r subject}
+emails$text[1]
+```
+How many characters are in the longest email in the dataset
+where longest is measured in terms of the maximum number of characters?
+```{r longest}
+max(nchar(emails$text))
+```
+print the longest email present in the dataset 
+```{r print_longest}
+min(nchar(emails$text))
+which(nchar(emails$text) == 13)
+```
+Which row contains the shortest email in the dataset?
+```{r shortest}
+which.min(nchar(emails$text))
+```
+
+Let's look at the breakdown of the number of emails are spam and not.
 ```{r table_of_responsive}
-table(emails$responsive)
+table(emails$spam)
 ```
 We see that the data set is unbalanced, with a relatively small proportion of emails responsive to
 the query.  This is typical in predictive coding problems.
@@ -131,44 +119,44 @@ the query.  This is typical in predictive coding problems.
 
 ## CREATING A CORPUS
 
-We will need to convert our tweets to a corpus for pre-processing. 
-Various function in the `tm` package can be used to create a corpus in many different ways.    
-We will create it from the `tweet` column of our data frame using two functions, `Corpus()` and `VectorSource()`.
-We feed to this latter the `Tweets` _variable_ of the `tweets` _data frame_.
+Follow the standard steps to build and pre-process the corpus:
 
+1) Build a new corpus variable called corpus.
+
+2) Using tm_map, convert the text to lowercase.
+
+3) Using tm_map, remove all punctuation from the corpus.
+
+4) Using tm_map, remove all English stopwords from the corpus.
+
+5) Using tm_map, stem the words in the corpus.
+
+6) Build a document term matrix from the corpus, called dtm.
+
+we are calling our corpus as the dtm
+
+# first step 
 ```{r create_corpus}
-corpus <- Corpus(VectorSource(emails$email))
+
+corpus <- Corpus(VectorSource(emails$text))
 ```
 
 Let's take a look at corpus:
 ```{r check_corpus}
 corpus
 ```
-
-
-### Converting text to _lower case_
-
+# preprocessing the corpus
 We use the `tm_map()` function which takes as
 
 * its first argument the name of a __corpus__ and 
 * as second argument a __function performing the transformation__ that we want to apply to the text.
 
-To transform all text _to lower case_:
-
-```{r process_tolower}
-corpus <- tm_map(corpus, tolower)
+```{r preprocessing}
+corpus = Corpus(VectorSource(emails$text))
+corpus = tm_map(corpus, tolower)
+corpus = tm_map(corpus, PlainTextDocument)
+corpus = tm_map(corpus, removePunctuation)
 ```
-
-```{r process_to_plain_text}
-corpus <- tm_map(corpus, PlainTextDocument)
-```
-
-### Removing punctuation
-
-```{r process_remove_punctuation}
-corpus <- tm_map(corpus, removePunctuation)
-```
-
 
 ### Removing _stop words_ 
 
@@ -184,23 +172,14 @@ prediction problem.
 corpus <- tm_map(corpus, removeWords, stopwords("english"))
 ```
 
-
 ### Stemming
 
 Lastly, we want to stem our document with the `stemDocument` argument.
 ```{r process_stemming}
 corpus <- tm_map(corpus, stemDocument)
 ```
-
-Now that we have gone through those four preprocessing steps, we can take a second look at the
-first email in the corpus.
-```{r check_corpus_after_cleaning}
-strwrap(corpus[[1]])
-```
-It looks quite a bit different now.
 It is a lot harder to read now that we removed all the stop words and punctuation and word stems,
 but now the emails in this corpus are ready for our machine learning algorithms.
-
 
 ## BAG OF WORDS
 
@@ -209,215 +188,254 @@ but now the emails in this corpus are ready for our machine learning algorithms.
 We are now ready to extract the __word frequencies__ to be used in our prediction problem.
 The `tm` package provides a function called `DocumentTermMatrix()` that generates a __matrix__ where:
 
-* the __rows__ correspond to __documents__, in our case tweets, and 
-* the __columns__ correspond to __words__ in those tweets.
+* the __rows__ correspond to __documents__, and 
+* the __columns__ correspond to __words__ .
 
 The values in the matrix are the number of times that word appears in each document.
 
-```{r create_DTM}
-DTM <- DocumentTermMatrix(corpus)
+```{r dtm}
+dtm = DocumentTermMatrix(corpus)
 ```
-
-```{r check_DRM}
-DTM
+#  view the document term matrix
+```{r view}
+dtm
 ```
-what we can see is that even though we have only __`r DTM$nrow`__ emails in the corpus, 
-we have over __`r DTM$ncol`__ terms that showed up at least once, which is clearly too many
-variables for the number of observations we have.  
+To obtain a more reasonable number of terms, limit dtm to contain terms appearing in at least 5% of documents, and store
+this result as spdtm, and view the number of terms present in the spdtm?
 
 So we want to remove the terms that don't appear too often in our data set.
 
-
 ### Remove sparse terms
 
-Therefore let's remove some terms that don't appear very often. 
-```{r remove_sparse_terms}
-sparse_DTM <- removeSparseTerms(DTM, 0.97)
+```{r sparse}
+spdtm = removeSparseTerms(dtm, 0.95)
 ```
-
 Now we can take a look at the summary statistics for the document-term matrix:
 ```{r check_lighter_DTM}
-sparse_DTM
+spdtm
 ```
-We can see that we have decreased the number of terms to __`r sparse_DTM$ncol`__, 
+We can see that we have decreased the number of terms to __`r spdtm$ncol`__, 
 which is a much more reasonable number.
 
+### Creating a data Frame from the _DTM_
+Build a data frame called __emailsSparse__ from _spdtm_, and use the __make.names__ function to make the variable names of
+emailsSparse valid.
 
-### Creating a Data Frame from the _DTM_
-
-Let's convert the sparse matrix into a data frame that we will be able to use for our predictive models.
-```{r convert_DTM_to_DF}
-labeledTerms <- as.data.frame(as.matrix(sparse_DTM))
+```{r data_frame}
+emailsSparse = as.data.frame(as.matrix(spdtm))
 ```
-
-To make all variable names _R-friendly_ use:
-```{r fix_variable_names}
-colnames(labeledTerms) <- make.names(colnames(labeledTerms))
+### use the _make.names_ function to make the variable names of emailsSparse valid.
+```{r make_names}
+colnames(emailsSparse) = make.names(colnames(emailsSparse))
 ```
+# sort the words
 
-We also have to add back-in the outcome variable
-```{r add_outcome_variable}
-labeledTerms$responsive <- emails$responsive
+__colSums()__ is an R function that returns the sum of values for each variable in our data frame. Our data frame contains the
+number of times each word stem (columns) appeared in each email (rows). Therefore, __colSums(emailsSparse)__ returns the
+number of times a word stem appeared across all the emails in the dataset. What is the word stem that shows up most
+frequently across all the emails in the dataset? Hint: think about how you can use __sort()__ or __which.max()__ to pick out the
+maximum frequency.
+
+What is the word stem that shows up most frequently across all the emails in the dataset
+```{r frequncy}
+sort(colSums(emailsSparse))
+which.max(colSums(emailsSparse))
 ```
-
-```{r check_DF}
-# str(labeledTerms)
+# Adding the variable
+Add a variable called "spam" to emailsSparse containing the email spam labels, this can be done by copying over the "spam"
+variable from the original data frame.
+```{r copy}
+emailsSparse$spam = emails$spam
 ```
-
-The data frame contains an awful lot of variables, __`r ncol(labeledTerms)`__ in total, 
-of which __`r ncol(labeledTerms)-1`__ are the frequencies of various words in the emails, 
-and the last one is `responsive`, _i.e._ the outcome variable.
-
-
-### Split data in training/testing sets
-
-Lastly, let's split our data into a training set and a testing set, putting __70%__ of the data in
-the __training__ set.
-
-```{r split_train_test}
-set.seed(144)
-
-split <- sample.split(labeledTerms$responsive, SplitRatio = 0.7)
-
-train <- subset(labeledTerms, split == TRUE)
-test <- subset(labeledTerms, split == FALSE)
+Now let's see how many time word stems appear at least 5000 times in the ham emails in the dataset
+We can read the most frequent terms in the ham dataset
+```{r freq}
+sort(colSums(subset(emailsSparse, spam == 0)))
 ```
-
-
-## BUILD A CART MODEL
-
-Now we are ready to build the model, and we will build a simple _CART model_ using the __default parameters__.
-A random forest would be another good choice from our toolset.  
-```{r CART_model}
-emailCART <- rpart(responsive ~ . , data = train, method = "class")
+# dataset to the spam emails
+```{r spam_view}
+# subset(emailsSparse, spam == 1)
 ```
+# we can read the most frequent terms 
+```{r read1}
+sort(colSums(subset(emailsSparse, spam == 1)))
+```
+## Build Machine learnig model
+
+First, convert the dependent variable to a factor with __emailsSparse$spam = as.factor(emailsSparse$spam)__
+```{r factor_spam}
+emailsSparse$spam = as.factor(emailsSparse$spam)
+```
+we are setting the random seed some value so that every time same result will come.
+```{r seed_set}
+set.seed(123)
+```
+# Building the model
+before building the model we need to split our data into training and testing by using __sample.split__ function with 70 data in training and rest in test
+```{r split_data}
+spl = sample.split(emailsSparse$spam, 0.7)
+```
+# Train and Test Subset 
+use the __subset__ function __TRUE__ for the train and __FALSE__ for the test
+```{r train_test}
+train = subset(emailsSparse, spl == TRUE)
+test = subset(emailsSparse, spl == FALSE)
+```
+# Logistic Regression Model
+
+we are creating a logistic regression model called as spamLog, for logistic regression we use function __glm__ with family binomial.
+we are using the all the variable as independent variable for training our model, for detection.
+
+```{r lgm_model}
+spamLog = glm(spam~., data=train, family="binomial")
+```
+# summary
+summary of logistic model spamLog
+```{r summary_Log1}
+# summary(spamLog)
+```
+# BUILD A CART MODEL
+
+create one model __CART__ and called this model as __spamCART__, we are using default parameters to train this model, so that no need to add __minbucket__ or __cp__ parameters. Remember to add the argument method="class" since this is a binary classification problem.
+```{r cart_model}
+
+spamCART = rpart(spam~., data=train, method="class")
+```
+# PLOT CART
 
 ```{r CART_plot_tree, fig.width = 5, fig.height = 4}
-prp(emailCART)
+prp(spamCART)
 ```
-We see at the very top is the word _California_.   
-
-* If `californ` appears at least twice in an email, we are going to take the right path and
-  predict that a document is __responsive__.     
-  It is somewhat unsurprising that California shows up, because we know that Enron had a heavy 
-  involvement in the California energy markets.
-* Further down the tree, we see a number of other terms that we could plausibly expect to be
-  related to energy bids and energy scheduling, like `system`, `demand`, `bid`, and `gas`.
-* Down at the bottom is `jeff`, which is perhaps a reference to Enron's CEO, Jeff Skillings, 
-  who ended up actually being jailed for his involvement in the fraud at the company.
-
-
-### Out-of-Sample Performance of the Model
-
-Now that we have trained a model, we need to evaluate it on the test set.  
-We build an object `predictCART` that has the predicted probabilities for each class from our CART model,
-by using the `predict()` function on the model `emailCART` and the test data with `newdata = test`.
-```{r model_CART_predict_test}
-predictCART <- predict(emailCART, newdata = test)
+# BUILD A RANDOM FOREST
+We are creating one more model random forest model and called this model as __spamRF__, we are using default parameters to train this mode also, no need to worry about specifying ntree or nodsize. Directly before training the random forest model, set the random seed to 123 (even though we've already done this, it's important to set the seed right before training the model so we all obtain the
+same results. Keep in mind though that on certain operating systems, your results might still be slightly different).
+```{r seed_again}
+set.seed(123)
 ```
-This new object gives us the predicted probabilities on the test set.
-We can look at the first 10 rows with 
-```{r check_predictions}
-predictCART[1:10, ]
+### Create Random Forest Model using all the parameters.
+```{r rf_model}
+spamRF = randomForest(spam~., data=train)
 ```
+
+### Out-of-Sample Performance of all the above model we created
+
+Now that we have trained a models, we need to evaluate it on the test set.  
+For each model, obtain the predicted spam probabilities for the training set. Be careful to obtain probabilities instead of
+predicted classes, because we will be using these values to compute training set __AUC__ values. Recall that you can obtain
+probabilities for CART models by not passing any type parameter to the predict() function, and you can obtain probabilities
+from a random forest by adding the argument __type="prob"__. For CART and random forest, you need to select the second
+column of the output of the __predict()__ function, corresponding to the probability of a message being spam
 
 * The __first__ column is the predicted probability of the document being __non-responsive__.
 * The __second__ column is the predicted probability of the document being __responsive__.
 * They sum to 1.
+In our case we are interested in the predicted probability of the document being responsive, so for that we are using __second__.
 
-In our case we are interested in the predicted probability of the document being responsive
-and it would be convenient to handle that as a separated variable.
-```{r predict_prob_vector}
-predictCART.prob <- predictCART[ , 2]
+```{r predict_models}
+predTrainLog = predict(spamLog, type="response")
+predTrainCART = predict(spamCART)[,2]
+predTrainRF = predict(spamRF, type="prob")[,2]
 ```
-This new object contains our test set predicted probabilities.
+This new object gives us the predicted probabilities on the test set.
+# predicted probabilities
 
-We are interested in the __accuracy__ of our model on the test set, _i.e._ out-of-sample.
+How many of the training set predicted probabilities from spamLog are less than 0.00001?
+```{r spamLog1}
+table(predTrainLog<0.00001)
+```
+How many of the training set predicted probabilities from spamLog are more than 0.99999?
+```{r spamLog}
+table(predTrainLog > 0.99999)
+```
+How many of the training set predicted probabilities from spamLog are between 0.00001 and 0.99999?
+```{r spamlog2}
+table(predTrainLog >= 0.00001 & predTrainLog <= 0.99999)
+```
+# summary
+```{r summary_Log}
+# summary(spamLog)
+```
+# Accuracy
+
+What is the training set accuracy of spamLog, using a threshold of 0.5 for predictions.
+```{r accuracy_spamLog}
+table(train$spam, predTrainLog > 0.5)
+(3052+954)/nrow(train)
+```
+What is the training set AUC of spamLog?
+```{r auc_spamLog}
+predictionTrainLog = prediction(predTrainLog, train$spam)
+as.numeric(performance(predictionTrainLog, "auc")@y.values)
+```
+What is the training set accuracy of spamCART, using a threshold of 0.5 for predictions?
+```{r accuracy_spamCART}
+table(train$spam, predTrainCART > 0.5)
+```
+# accuracy
+```{r accuracy_CART}
+(2885+894)/nrow(train)
+```
+What is the training set AUC of spamCART?
+```{r accuracy_1}
+predictionTrainCART = prediction(predTrainCART, train$spam)
+as.numeric(performance(predictionTrainCART, "auc")@y.values)
+```
+What is the training set accuracy of spamRF, using a threshold of 0.5 for predictions?
+```{r accuracy_RF}
+table(train$spam, predTrainRF > 0.5)
+```
+# accuracy 
+```{r calculation}
+(3013+914)/nrow(train)
+```
+
+# EVALUATING ON THE TEST SET
+We are interested in the __accuracy__ of our models on the test set, _i.e._ out-of-sample.
 First we compute the _confusion matrix_:
-```{r CART_confusion_matrix}
-cmat_CART <- table(test$responsive, predictCART.prob >= 0.5)
-cmat_CART 
-
-accu_CART <- (cmat_CART[1,1] + cmat_CART[2,2])/sum(cmat_CART)
+```{r test_predict}
+predTestLog = predict(spamLog, newdata=test, type="response")
+predTestCART = predict(spamCART, newdata=test)[,2]
+predTestRF = predict(spamRF, newdata=test, type="prob")[,2]
 ```
-* __Overall accuracy__ of this _CART_ model is __`r round(accu_CART,4)`__    
-* __Sensitivity__ = __TP rate__ = `r cmat_CART[2,2]` / `r sum(cmat_CART[2,])` = __`r round(cmat_CART[2,2]/sum(cmat_CART[2,]),3)`__
-* __Specificity__ = __(1 - FP rate)__ = `r cmat_CART[1,1]` / `r sum(cmat_CART[1,])` = __`r round(cmat_CART[1,1]/sum(cmat_CART[1,]),3)`__
-* __FP rate__ = `r cmat_CART[1,2]` / `r sum(cmat_CART[1,])` = __`r round(cmat_CART[1,2]/sum(cmat_CART[1,]),3)`__
-* __FN rate__ = `r cmat_CART[2.1]` / `r sum(cmat_CART[2,])` = __`r round(cmat_CART[2,1]/sum(cmat_CART[2,]),3)`__
+# Test Accuracy of all the above model
 
-
-### Comparison with the _baseline model_
-
-Let's compare this to a simple baseline model that __always predicts non-responsive__ (_i.e._ the
-most common value of the dependent variable).   
-To compute the accuracy of the baseline model, let's make a table of just the outcome variable `responsive`.
-```{r baseline_accuracy}
-cmat_baseline <- table(test$responsive)
-cmat_baseline
-
-accu_baseline <- max(cmat_baseline)/sum(cmat_baseline)
+testing set accuracy of spamLog, using a threshold of 0.5 for predictions?
+```{r test_accuracy}
+table(test$spam, predTestLog > 0.5)
 ```
-The accuracy of the baseline model is then __`r round(accu_baseline,4)`__.     
-We see just a small improvement in accuracy using the CART model, which is a common case in
-unbalanced data sets.
-
-However, as in most document retrieval applications, there are __uneven costs for different types of errors__ here.   
-Typically, a human will still have to manually review all of the predicted responsive documents to
-make sure they are actually responsive.    
-Therefore: 
-
-* If we have a __false positive__, _i.e._ a non-responsive document labeled as responsive, 
-  the mistake translates to a bit of additional work in the manual review process but no further 
-  harm, since the manual review process will remove this erroneous result.    
-* On the other hand, if we have a __false negative__, _i.e._ a responsive document labeled as non-responsive 
-  by our model, we will miss the document entirely in our predictive coding process.   
-
-Therefore, we are going to assign a higher cost to false negatives than to false positives, which
-makes this a good time to look at other cut-offs on our ROC curve.
-
-
-### ROC curve
-
-Let's look at the ROC curve so we can understand the performance of our model at different cutoffs.   
-To plot the ROC curve we use the `performance()` function to extract the _true positive rate_ 
-and _false positive rate_.
-```{r ROCR_prediction_object}
-predROCR <- prediction(predictCART.prob, test$responsive)
-perfROCR <- performance(predROCR, "tpr", "fpr")
+# accuracy
+```{r accuracy_test}
+(1257+376)/nrow(test)
+```
+What is the testing set AUC of spamLog
+```{r test_accuracy_auc}
+predictionTestLog = prediction(predTestLog, test$spam)
+as.numeric(performance(predictionTestLog, "auc")@y.values)
+```
+What is the testing set accuracy of spamCART, using a threshold of 0.5 for predictions?
+```{r test_accuracy_CART}
+table(test$spam, predTestCART > 0.5)
+```
+# accuracy 
+```{r accuracy_CATR1}
+(1228+386)/nrow(test)
+```
+# What is the testing set AUC of spamCART?
+```{r accuracy_AUC1}
+predictionTestCART = prediction(predTestCART, test$spam)
+as.numeric(performance(predictionTestCART, "auc")@y.values)
 ```
 
-We then plot the ROC curve, with the option that color-codes the different cutoff thresholds.
-```{r get_ROC_2, fig.width = 6, fig.height = 5}
-plot(perfROCR, colorize = TRUE, lwd = 4)
+What is the testing set accuracy of spamRF, using a threshold of 0.5 for predictions?
+```{r RF1}
+table(test$spam, predTestRF > 0.5)
 ```
-The best cutoff to select is entirely dependent on the costs assigned by the decision maker to
-false positives and true positives.   
-However, we do favor cutoffs that give us a __high sensitivity__, _i.e._ we want to identify a 
-large number of the responsive documents.
-
-Therefore a choice that might look promising could be in the part of the curve where it becomes
-flatter (going towards the right), where we have a __true positive rate of around 70%__ (meaning
-that we're getting about 70% of all the responsive documents), and 
-a __false positive rate of about 20%__ (meaning that we are making mistakes and accidentally
-identifying as responsive 20% of the non-responsive documents.)
-
-Since, typically, the vast majority of documents are non-responsive, operating at this cutoff
-would result in a large decrease in the amount of manual effort needed in the _eDiscovery_ process.   
-
-From the blue color of the plot at this particular location we can infer that we are looking at a
-threshold around maybe 0.15 or so, significantly lower than 0.5, which is definitely what we would
-expect since we favor false positives to false negatives.
-
-
-### _Area Under the Curve_ (AUC)
-
-```{r AUC}
-auc_CART <- as.numeric(performance(predROCR, "auc")@y.values)
+# accuracy 
+```{r accuracy_RF1}
+(1290+385)/nrow(test)
 ```
-The AUC of the _CART_ models is __`r round(auc_CART, 4)`__, which means that our model can
-differentiate between a randomly selected responsive and non-responsive document 
-about __`r round(100*auc_CART, 1)`%__ of the time.
-
----
-
+# What is the testing set AUC of spamRF?
+```{r test_RF}
+predictionTestRF = prediction(predTestRF, test$spam)
+as.numeric(performance(predictionTestRF, "auc")@y.values)
+```
