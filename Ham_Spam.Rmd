@@ -1,14 +1,13 @@
 ---
-title: "The Analytics Edge - Unit 5 :<br /> Text Analytics on Enron Emails"
-subtitle    : Reproducible notes following lecture slides and videos
-author      : Giovanni Fossati
-job         : Rice University
+title: "The Analytics Edge - Unit 5 :<br /> Assignment Email Ham or Spam"
+subtitle    : Reproducible notes following the assignment and lecture notes
+author      : Anil Kumar
+job         : IIT Madras
 output      : 
   html_document:
     self_contained: true
     theme: cerulean
     highlight: tango
-    css: css/gf_small_touches.css
     mathjax: "default"
 ---
 
@@ -25,11 +24,11 @@ opts_chunk$set(message = FALSE, error = FALSE, warning = FALSE,
 #                dpi=96)
 ```
 
-[ [source files available on GitHub](https://github.com/pedrosan/TheAnalyticsEdge) ]
+[ [source files available on GitHub](https://github.com/anilcs13m) ]
 
 ## PRELIMINARIES
 
-Libraries needed for data processing and plotting:
+Load the library that are required in the assignment:
 ```{r load_packages, cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE, tidy = FALSE}
 library("tm")
 library("SnowballC")
