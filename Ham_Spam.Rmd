@@ -1,23 +1,10 @@
 ```
 
-## title: "The Analytics Edge - Unit 5 :<br /> Assignment Email Ham or Spam"
-subtitle    : Reproducible notes following the assignment and lecture notes
-author      : Anil Kumar
-job         : IIT Madras
+The Analytics Edge:-Assignment Email Ham or Spam
+subtitle          : Reproducible notes following the assignment and lecture notes
+author            : Anil Kumar
+job               : IIT Madras
 
-```
-
-```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
-require(knitr)
-options(width = 100, scipen = 5)
-# options(width = 100, digits = 7)
-opts_chunk$set(message = FALSE, error = FALSE, warning = FALSE, 
-               collapse = TRUE, tidy = FALSE,
-               cache = FALSE, cache.path = '.cache/', 
-               fig.align = 'left', dpi = 100, fig.path = 'figures/Enron_Emails/')
-# opts_chunk$set(dev="png", 
-#                dev.args=list(type="cairo"),
-#                dpi=96)
 ```
 
 [ [source files available on GitHub](https://github.com/anilcs13m) ]
