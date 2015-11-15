@@ -1,16 +1,10 @@
 ```
----
-title: "The Analytics Edge - Unit 5 :<br /> Assignment Email Ham or Spam"
+
+## title: "The Analytics Edge - Unit 5 :<br /> Assignment Email Ham or Spam"
 subtitle    : Reproducible notes following the assignment and lecture notes
 author      : Anil Kumar
 job         : IIT Madras
-output      : 
-  html_document:
-    self_contained: true
-    theme: cerulean
-    highlight: tango
-    mathjax: "default"
----
+
 ```
 
 ```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
